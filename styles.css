@@ -1,0 +1,428 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 101px;
+    width: 100%;
+    color: #FFFFFF;
+    background-image: url(img/Rectangle\ 2.png);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    display: inline-block;
+}
+
+.logo-text {
+    width: 128px;
+    margin-left: 68px;
+    height: 44px;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 19px;
+
+}
+
+.sub-logo {
+    width: 19px;
+    height: 10%;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 19px;
+    margin-left: 5px;
+    margin-top: auto;
+}
+
+.cart-button {
+    background-image: url(img/Cart_Button.png);
+    border: none;
+    height: 45px;
+    width: 90px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 5%;
+    border-radius: 8px;
+}
+
+.cart-button:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border: 2px solid #0f52ba;
+    border-radius: 9%;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+
+.product {
+    text-align: center;
+    border-radius: 10%;
+}
+
+.product img {
+    width: 218px;
+    height: 285px;
+    object-fit: cover;
+}
+
+.quadro-menu {
+    width: 998Spx;
+    height: 100px;
+    align-items: center;
+}
+
+.Product-1 {
+    background-image: url(img/produto\ 1.png);
+    width: 218px;
+    height: 285px;
+    width: 218px;
+    object-fit: cover;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.Product-1:hover {
+    margin: 1px;
+    border: 2px solid #0f52ba;
+    border-radius: 4%;
+}
+
+.Product-2 {
+    background-image: url(img/produto\ 2.png);
+    width: 218px;
+    height: 285px;
+    width: 218px;
+    object-fit: cover;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.Product-2:hover {
+    margin: 1px;
+    border: 2px solid #0f52ba;
+    border-radius: 4%;
+}
+
+.Product-3 {
+    background-image: url(img/produto\ 3.png);
+    width: 218px;
+    height: 285px;
+    width: 218px;
+    object-fit: cover;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.Product-3:hover {
+    margin: 1px;
+    border: 2px solid #0f52ba;
+    border-radius: 4%;
+}
+
+.Product-4 {
+    background-image: url(img/produto\ 4.png);
+    width: 218px;
+    height: 285px;
+    width: 218px;
+    object-fit: cover;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.Product-4:hover {
+    margin: 1px;
+    border: 2px solid #0f52ba;
+    border-radius: 4%;
+}
+
+.Product-5 {
+    background-image: url(img/produto\ 5.png);
+    width: 218px;
+    height: 285px;
+    width: 218px;
+    object-fit: cover;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.Product-5:hover {
+    margin: 1px;
+    border: 2px solid #0f52ba;
+    border-radius: 4%;
+}
+
+.Product-6 {
+    background-image: url(img/produto\ 6.png);
+    width: 218px;
+    height: 285px;
+    width: 218px;
+    object-fit: cover;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.Product-6:hover {
+    margin: 1px;
+    border: 2px solid #0f52ba;
+    border-radius: 4%;
+}
+
+.Product-7 {
+    background-image: url(img/produto\ 7.png);
+    width: 218px;
+    height: 285px;
+    width: 218px;
+    object-fit: cover;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.Product-7:hover {
+    margin: 1px;
+    border: 2px solid #0f52ba;
+    border-radius: 4%;
+}
+
+.Product-8 {
+    background-image: url(img/produto\ 8.png);
+    width: 218px;
+    height: 285px;
+    width: 218px;
+    object-fit: cover;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.Product-8:hover {
+    margin: 1px;
+    border: 2px solid #0f52ba;
+    border-radius: 4%;
+}
+
+.img-rodape {
+    position: relative;
+    top: 15vh;
+}
+
+.rodape-img {
+    display: block;
+    margin: 0 auto;
+}
+
+.cart {
+    font-weight: 700;
+    font-size: 27px;
+    background-color: #0f52ba;
+    position: fixed;
+    top: 0;
+    right: -540px;
+    width: 486px;
+    height: 100%;
+    transition: right 0.3s;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: right 0.3s;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    border-left: 1px solid #ffffff;
+}
+
+.cart:hover {
+    border-left: 1px solid #0d99ff;
+}
+
+.cart.open {
+    right: 0;   
+}
+
+.cart h2 {
+    font-size: 27px;
+    font-weight: 700;
+    margin-top: 36px;
+    color: white;
+    margin-left: 45px;
+    width: 180px;
+}
+
+.cart.open2 {
+    visibility: hidden;
+    transition: visibility 1s linear;
+    position: fixed;
+    width: 486px;
+    height: 10%;
+    right: 5px;
+    box-shadow: -5px 0px 6px 0px rgba(0, 0, 0, 0.13);
+    transition: left 1s ease-in-out;
+}
+
+.cart-items {
+    list-style-type: lower-alpha;
+    padding: 0;
+    max-height: 70vh;
+    max-width: 90%;
+    overflow-y: auto;
+    margin-left: 5%;
+}
+
+.cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items li .item-image {
+    width: 50px; /* Ajuste conforme necessário */
+    height: 50px; /* Ajuste conforme necessário */
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+}
+
+.cart-items li .item-details {
+    display: flex;
+    flex-direction: column;
+    width: 5;
+    margin-left: 5%;
+}
+
+.cart-items li .item-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.cart-items li .item-quantity button {
+    background-color: #ddd;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.cart-items li .item-quantity span {
+    margin: 0 10px;
+}
+
+.cart-summary {
+    background-color: #0f52ba;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #0f52ba;
+}
+
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -250px;
+}
+.cart-summary .left {
+    flex: -4;
+}
+.cart-summary .right {
+    flex: 1;
+    text-align: right;
+}
+
+#checkout-button {
+    width: 100%;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 15px;
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 97px;
+    border-radius: 5px;
+}
+
+#checkout-button:hover {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    border: 1px solid #0f52ba;
+    background-color: #fc0303;
+}
+
+.cart-h2 {
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 32.91px;
+    color: #FFFFFF;
+}
+
+.close-button {
+    background-image: url(img/x.png);
+    border: transparent;
+    height: 40px;
+    width: 50px;
+    cursor: pointer;
+    position: fixed;
+    object-fit: cover;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 430px;
+    margin-top: 10px;
+    float: right;
+    border-radius: 100%;
+    align-self: flex-end;
+}
+
+.close-button:hover {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    border: 1px solid #0f52ba;
+    border-radius: 100%;
+}

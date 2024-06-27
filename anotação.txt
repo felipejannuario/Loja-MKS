@@ -1,0 +1,319 @@
+Para transformar seu projeto atual de loja virtual em uma aplicação moderna que utilize React (ou Next.js), React-query, Styled-components (ou SASS), Framer-motion, TypeScript, Jest e a testing-library, será necessário reescrever o projeto com essas tecnologias. Vou fornecer um guia passo a passo para ajudá-lo a fazer essa transição.
+
+### Passo 1: Inicialize o Projeto com Next.js e TypeScript
+
+1. **Crie um novo projeto Next.js com TypeScript:**
+
+```sh
+npx create-next-app@latest my-store --typescript
+cd my-store
+```
+
+2. **Instale as dependências necessárias:**
+
+```sh
+npm install react-query styled-components framer-motion jest @testing-library/react @testing-library/jest-dom
+npm install --save-dev @types/styled-components @types/jest @types/testing-library__react
+```
+
+3. **Configurar o `styled-components` em Next.js:**
+
+Crie o arquivo `_document.tsx` em `pages`:
+
+```tsx
+// pages/_document.tsx
+import Document, { DocumentContext, DocumentInitialProps, Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
+
+export default class MyDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+        });
+
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+```
+
+### Passo 2: Estrutura e Componentes da Aplicação
+
+1. **Crie a estrutura básica de componentes:**
+
+```bash
+mkdir components pages styles hooks
+```
+
+2. **Crie o arquivo `index.tsx` em `pages` para a página principal:**
+
+```tsx
+// pages/index.tsx
+import { useQuery } from 'react-query';
+import { useState } from 'react';
+import styled from 'styled-components';
+import { fetchProducts } from '../utils/api'; // Suponha que você tenha uma função para buscar produtos da API
+
+export default function Home() {
+  const { data: products, isLoading } = useQuery('products', fetchProducts);
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+
+  return (
+    <Container>
+      <Header>
+        <Logo>MKS <span>sistemas</span></Logo>
+        <CartButton onClick={() => {/* abrir carrinho */}}>Cart</CartButton>
+      </Header>
+      <ProductList>
+        {products.map((product) => (
+          <Product key={product.id} onClick={() => addToCart(product)}>
+            <img src={product.image} alt={product.name} />
+            <div>{product.name}</div>
+            <div>R${product.price}</div>
+          </Product>
+        ))}
+      </ProductList>
+    </Container>
+  );
+}
+
+const Container = styled.div``;
+const Header = styled.header``;
+const Logo = styled.div``;
+const CartButton = styled.button``;
+const ProductList = styled.div``;
+const Product = styled.div``;
+```
+
+3. **Crie estilos usando `styled-components`:**
+
+```tsx
+// styles/global.ts
+import { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
+  * {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  /* outros estilos globais */
+`;
+
+// Adicione GlobalStyle ao seu arquivo _app.tsx
+// pages/_app.tsx
+import { AppProps } from 'next/app';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { GlobalStyle } from '../styles/global';
+
+const queryClient = new QueryClient();
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </QueryClientProvider>
+  );
+}
+
+export default MyApp;
+```
+
+### Passo 3: Configuração da API
+
+1. **Crie uma função para buscar os produtos da API:**
+
+```tsx
+// utils/api.ts
+export const fetchProducts = async () => {
+  const response = await fetch('https://api.example.com/products'); // Substitua pela URL real da sua API
+  return response.json();
+};
+```
+
+### Passo 4: Carrinho de Compras
+
+1. **Adicione funcionalidades ao carrinho:**
+
+```tsx
+// components/Cart.tsx
+import styled from 'styled-components';
+
+export default function Cart({ cart, removeFromCart }) {
+  return (
+    <CartContainer>
+      <h2>Carrinho de Compras</h2>
+      <ul>
+        {cart.map((item, index) => (
+          <li key={index}>
+            <span>{item.name}</span>
+            <span>{item.price}</span>
+            <button onClick={() => removeFromCart(item.id)}>Remover</button>
+          </li>
+        ))}
+      </ul>
+    </CartContainer>
+  );
+}
+
+const CartContainer = styled.div`
+  /* estilos do carrinho */
+`;
+```
+
+2. **Incorporar o carrinho na página principal:**
+
+```tsx
+// pages/index.tsx
+import Cart from '../components/Cart';
+
+export default function Home() {
+  const { data: products, isLoading } = useQuery('products', fetchProducts);
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
+
+  const removeFromCart = (id) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+
+  return (
+    <Container>
+      <Header>
+        <Logo>MKS <span>sistemas</span></Logo>
+        <CartButton onClick={() => {/* abrir carrinho */}}>Cart</CartButton>
+      </Header>
+      <ProductList>
+        {products.map((product) => (
+          <Product key={product.id} onClick={() => addToCart(product)}>
+            <img src={product.image} alt={product.name} />
+            <div>{product.name}</div>
+            <div>R${product.price}</div>
+          </Product>
+        ))}
+      </ProductList>
+      <Cart cart={cart} removeFromCart={removeFromCart} />
+    </Container>
+  );
+}
+```
+
+### Passo 5: Animações com Framer Motion
+
+1. **Adicionar animações ao carrinho e produtos:**
+
+```tsx
+// components/Cart.tsx
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+
+const CartContainer = styled(motion.div)`
+  /* estilos do carrinho */
+`;
+
+// pages/index.tsx
+import { motion } from 'framer-motion';
+
+const Product = styled(motion.div)`
+  /* estilos do produto */
+`;
+
+// Adicione animações
+<Product
+  key={product.id}
+  onClick={() => addToCart(product)}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  whileHover={{ scale: 1.1 }}
+>
+  <img src={product.image} alt={product.name} />
+  <div>{product.name}</div>
+  <div>R${product.price}</div>
+</Product>
+```
+
+### Passo 6: Testes com Jest e Testing Library
+
+1. **Configure o Jest em seu projeto:**
+
+Adicione as seguintes configurações no arquivo `jest.config.js`:
+
+```js
+module.exports = {
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+};
+```
+
+Crie o arquivo `jest.setup.js`:
+
+```js
+import '@testing-library/jest-dom';
+```
+
+2. **Escreva testes para os componentes:**
+
+```tsx
+// __tests__/index.test.tsx
+import { render, screen } from '@testing-library/react';
+import Home from '../pages/index';
+
+test('renders home page', () => {
+  render(<Home />);
+  const linkElement = screen.getByText(/Carrinho de Compras/i);
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+### Passo 7: Deploy da Aplicação
+
+1. **Faça o deploy no Vercel (ou qualquer outra plataforma de sua escolha):**
+
+```sh
+npx vercel
+```
+
+Siga as instruções para concluir o deployment.
+
+### Conclusão
+
+Essa abordagem transforma seu projeto original em uma aplicação moderna usando as ferramentas especificadas. Cada seção inclui exemplos específicos de código para facilitar a implementação e ajudar na integração das tecnologias requisitadas. Certifique-se de ajustar as configurações de acordo com suas necessidades específicas e a API que você estará usando.

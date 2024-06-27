@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    
+    <title>MKS Sistemas</title>
+    
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <span class="logo-text">MKS</span>
+            <span class="sub-logo">sistemas</span>
+        </div>
+
+        <button class="cart-button" onclick="toggleCart()"></button>
+
+    </div>
+
+<div class="quadro-menu"></div>
+
+    <div class="product-list">
+        <div class="product">
+            <button class="Product-1" onclick="addToCart('Produto 1', 399)"></button>
+        </div>
+
+       
+        <div class="product">
+            <button class="Product-2" onclick="addToCart('Produto 2', 199)"></button>
+        </div>
+
+       
+        <div class="product">
+            <button class="Product-3" onclick="addToCart('Produto 3', 899)"></button>
+        </div>
+
+       
+        <div class="product">
+            <button class="Product-4" onclick="addToCart('Produto 4', 459)"></button>
+        </div>
+    </div>
+
+    <div class="product-list">
+        <div class="product">
+            <button class="Product-5" onclick="addToCart('Produto 5', 2499)"></button>
+        </div>
+
+       
+        <div class="product">
+            <button class="Product-6" onclick="addToCart('Produto 6', 899)"></button>
+        </div>
+
+        
+           <div class="product">
+            <button class="Product-7" onclick="addToCart('Produto 7', 399)"></button>
+           </div>
+
+       
+        <div class="product">
+            <button class="Product-8" onclick="addToCart('Produto 8', 249)"></button>
+        </div>
+    </div>
+</div>
+ <div class="cart.open2"> 
+    <div class="cart" id="cart">
+        <h2>Carrinho <br>de Compras</h2>
+        <button class="close-button" onclick="toggleCart()"></button>
+        <ul class="cart-items" id="cart-items"></ul>
+        <div class="cart-summary">
+            <p class="left">Total:</p>
+            <p class="right"><span id="total-price">R$0</span></p></div>
+            <button id="checkout-button" onclick="finalizePurchase()">Finalizar Compra</button>
+    </div> 
+   
+    </div>
+    <div class="img-rodape">
+        <img src="./img/MKS sistemas © Todos os direitos reservados.png" alt="MKS Sistemas" class="rodape-img">
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
