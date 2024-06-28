@@ -72,14 +72,9 @@
     border-radius: 10%;
 }
 
-.product img {
-    width: 218px;
-    height: 285px;
-    object-fit: cover;
-}
 
 .quadro-menu {
-    width: 998Spx;
+    width: 998px;
     height: 100px;
     align-items: center;
 }
